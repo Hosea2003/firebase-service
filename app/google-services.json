@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "313746414625",
+    "project_id": "fir-service-bff04",
+    "storage_bucket": "fir-service-bff04.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:313746414625:android:889cdb436e0759162c9760",
+        "android_client_info": {
+          "package_name": "com.rindra.firebaseservice"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-p_sTuLgKwQ7wHJNG07lCJMiLIHvoQ1k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
