@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -18,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.rindra.firebaseservice.viewmodel.AuthState
 import com.rindra.firebaseservice.viewmodel.AuthViewModel
 import kotlinx.serialization.Serializable
 
@@ -38,6 +40,8 @@ fun LoginScreen(
     var password by remember {
         mutableStateOf("")
     }
+
+    val authState = authViewModel.authState.observeAsState()
 
     Column(
         modifier = modifier,
@@ -74,8 +78,10 @@ fun LoginScreen(
 
         Button(
             onClick = {
-//                TODO: implement login
-            }
+                authViewModel.login(email, password)
+                navController.navigate(HomeScreenRoute)
+            },
+            enabled = authState.value != AuthState.Loading
         ) {
             Text(text = "Login")
         }

@@ -42,6 +42,23 @@ class AuthViewModel: ViewModel() {
             }
     }
 
+    fun login(email:String, password:String){
+        _authState.postValue(AuthState.Loading)
+        auth.signInWithEmailAndPassword(
+            email, password
+        )
+            .addOnCompleteListener { task ->
+                if(task.isSuccessful){
+                    _authState.postValue(AuthState.Authenticated)
+                }
+                else{
+                    _authState.postValue(AuthState.Error(
+                        task.exception?.message?:"Something went wrong"
+                    ))
+                }
+            }
+    }
+
 }
 
 sealed class AuthState{
