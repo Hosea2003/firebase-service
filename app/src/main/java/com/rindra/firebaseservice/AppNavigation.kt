@@ -12,11 +12,13 @@ import com.rindra.firebaseservice.screen.LoginScreenRoute
 import com.rindra.firebaseservice.screen.SignUpScreen
 import com.rindra.firebaseservice.screen.SignUpScreenRoute
 import com.rindra.firebaseservice.viewmodel.AuthViewModel
+import com.rindra.firebaseservice.viewmodel.HomeViewModel
 
 @Composable
 fun AppNavigation(
     modifier: Modifier = Modifier,
-    authViewModel: AuthViewModel
+    authViewModel: AuthViewModel,
+    homeViewModel: HomeViewModel
 ) {
     val navController = rememberNavController()
 
@@ -31,7 +33,7 @@ fun AppNavigation(
             SignUpScreen(modifier, navController, authViewModel)
         }
         composable<HomeScreenRoute> {
-            HomeScreen(modifier, navController, authViewModel)
+            HomeScreen(modifier, navController, authViewModel, homeViewModel)
         }
     }
 }

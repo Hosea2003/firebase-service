@@ -14,12 +14,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModelProvider
 import com.rindra.firebaseservice.ui.theme.FirebaseServiceTheme
 import com.rindra.firebaseservice.viewmodel.AuthViewModel
+import com.rindra.firebaseservice.viewmodel.HomeViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         val authViewModel = ViewModelProvider(this)[AuthViewModel::class]
+        val homeViewModel = ViewModelProvider(this)[HomeViewModel::class]
         setContent {
             FirebaseServiceTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding->
@@ -27,7 +29,8 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(innerPadding),
-                        authViewModel = authViewModel
+                        authViewModel = authViewModel,
+                        homeViewModel = homeViewModel
                     )
                 }
             }
